@@ -5,7 +5,6 @@
  *      Author: RyanMini
  */
 
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -91,24 +90,54 @@ struct Node* createList(char* string, int numWords){
 			tempNode->next = NULL;
 
 
+			/*
 			while (ptr->next != NULL){
 				ptr = ptr->next;
 			}
 			ptr->next = tempNode;
-
-
+			*/
 
 			/*
-			 *
+			printf("inserting %s\n", tempNode->string);
+			if (front != NULL){
+				struct Node *p = front;
+				printf("\n");
+				while (p->next != NULL){
 
+					printf("%s --> ", p->string);
+					p = p->next;
+				}
+				printf("%s\n\n", p->string);
+			}
+			*/
+
+
+
+			int doNotTouch = 0;
 			// at this point, ptr = front, which does not equal NULL
 			while (ptr -> next != NULL){
-				printf("sup\n");
+
+				/*
+				printf("inserting %s\n", tempNode->string);
+				if (front != NULL){
+					struct Node *p = front;
+					printf("\n");
+					while (p->next != NULL){
+
+						printf("%s --> ", p->string);
+						p = p->next;
+					}
+					printf("%s\n\n", p->string);
+				}
+				*/
+
 				if (ptr == front){
 					int compare = strcmp(tempNode->string, front->string);
 					if (compare < 0){
 						tempNode->next = front;
 						front = tempNode;
+						doNotTouch = 1;
+						break;
 					}
 
 					else {
@@ -116,6 +145,8 @@ struct Node* createList(char* string, int numWords){
 						if (compare < 0){
 							tempNode->next = front->next;
 							front->next = tempNode;
+							doNotTouch = 1;
+							break;
 						}
 						else {
 							ptr = ptr->next;
@@ -124,19 +155,37 @@ struct Node* createList(char* string, int numWords){
 				}
 
 				else {
-					printf("Hello\n");
+
 					int compare = strcmp(tempNode->string, ptr->next->string);
 					if (compare < 0){
 						tempNode->next = ptr->next;
 						ptr->next = tempNode;
+						doNotTouch = 1;
+						break;
 					}
 					else {
-						printf("yo\n");
+
 						ptr = ptr->next;
 					}
 				}
 			}
-			if (ptr == front){
+
+			/*
+			printf("inserting %s\n", tempNode->string);
+			if (front != NULL){
+				struct Node *p = front;
+				printf("\n");
+				while (p->next != NULL){
+
+					printf("%s --> ", p->string);
+					p = p->next;
+				}
+				printf("%s\n\n", p->string);
+			}
+			*/
+
+
+			if (ptr == front && doNotTouch != 1){
 				int compare = strcmp(tempNode->string, ptr->string);
 				if (compare < 0){
 					tempNode->next = ptr;
@@ -148,7 +197,7 @@ struct Node* createList(char* string, int numWords){
 					// complete
 				}
 			}
-			else {
+			else if (doNotTouch != 1){
 				int compare = strcmp(tempNode->string, ptr->string);
 				if (compare >= 0){
 					tempNode->next = NULL;
@@ -160,9 +209,6 @@ struct Node* createList(char* string, int numWords){
 
 			}
 
-
-			*/
-
 		}
 	}
 	return front;
@@ -172,10 +218,9 @@ struct Node* createList(char* string, int numWords){
 
 int main(int argc, char *argv[]){
 
-
     // if a is alphabetically before d, it returns a negative number
 
-	char *string = argv[1];
+	char *string = "ryan charles ankeet karan justin thomas willy mike vineet al";
 	struct Node *front = NULL;
 	int numWords = numberOfWords(string);  				// generates the total number of distinct words found in the string
 
