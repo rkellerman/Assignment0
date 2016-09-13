@@ -17,6 +17,7 @@ struct Node{
 };
 
 int numberOfWords(char *string){
+	printf("Hello from Vineet\n");
 	int counter = 0;
 	int i = 0;
 	int word = 0;
