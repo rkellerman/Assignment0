@@ -220,7 +220,7 @@ int main(int argc, char *argv[]){
 
     // if a is alphabetically before d, it returns a negative number
 
-	char *string = "ryan charles ankeet karan justin thomas willy mike vineet al";
+	char *string = argv[1];
 	struct Node *front = NULL;
 	int numWords = numberOfWords(string);  				// generates the total number of distinct words found in the string
 
