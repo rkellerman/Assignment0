@@ -16,6 +16,7 @@ struct Node{
 };
 
 int numberOfWords(char *string){
+	printf("Merging changes via git\n");
 	int counter = 0;
 	int i = 0;
 	int word = 0;
