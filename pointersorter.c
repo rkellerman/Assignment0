@@ -101,42 +101,65 @@ struct Node* createList(char* string, int numWords){
 			/*
 			 *
 
-			while (ptr->next != NULL){
-
+			// at this point, ptr = front, which does not equal NULL
+			while (ptr -> next != NULL){
+				printf("sup\n");
 				if (ptr == front){
-					printf("sup\n");
-					int compare = strcmp(tempNode->string, ptr->string);
+					int compare = strcmp(tempNode->string, front->string);
 					if (compare < 0){
-						tempNode->next = ptr;
+						tempNode->next = front;
 						front = tempNode;
-						break;
 					}
+
 					else {
-						int compare = strcmp(tempNode->string, ptr->next->string);
+						int compare = strcmp(tempNode->string, front->next->string);
 						if (compare < 0){
-							tempNode->next = ptr->next;
-							ptr->next = tempNode;
+							tempNode->next = front->next;
+							front->next = tempNode;
 						}
 						else {
 							ptr = ptr->next;
 						}
 					}
 				}
-				else {
 
+				else {
+					printf("Hello\n");
 					int compare = strcmp(tempNode->string, ptr->next->string);
 					if (compare < 0){
 						tempNode->next = ptr->next;
 						ptr->next = tempNode;
 					}
 					else {
-
-						printf("%s -- %s -- %s -- %s\n", tempNode->string, ptr->string, ptr->next->string, front->string);
-
+						printf("yo\n");
+						ptr = ptr->next;
 					}
 				}
-				ptr = ptr->next;
 			}
+			if (ptr == front){
+				int compare = strcmp(tempNode->string, ptr->string);
+				if (compare < 0){
+					tempNode->next = ptr;
+					front = tempNode;
+					// complete
+				}
+				else {
+					ptr->next = tempNode;
+					// complete
+				}
+			}
+			else {
+				int compare = strcmp(tempNode->string, ptr->string);
+				if (compare >= 0){
+					tempNode->next = NULL;
+					ptr->next = tempNode;
+				}
+				else {
+					// should have been checked
+				}
+
+			}
+
 
 			*/
 
